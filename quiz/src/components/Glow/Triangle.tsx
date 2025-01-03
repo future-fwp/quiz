@@ -1,4 +1,4 @@
-const Triangle = () => {
+const Triangle = ({ addlayout }: { addlayout: string }) => {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -6,6 +6,7 @@ const Triangle = () => {
 			height="830"
 			viewBox="0 0 720 830"
 			fill="none"
+			className={`absolute blur-3xl ${addlayout}`}
 		>
 			<g filter="url(#filter0_f_4_2731)">
 				<path

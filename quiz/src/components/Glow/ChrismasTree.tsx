@@ -1,4 +1,4 @@
-const ChrismasTree = () => {
+const ChrismasTree = ({ addlayout }: { addlayout: string }) => {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -6,6 +6,7 @@ const ChrismasTree = () => {
 			height="320"
 			viewBox="0 0 318 320"
 			fill="none"
+			className={`${addlayout} absolute`}
 		>
 			<g filter="url(#filter0_f_4_2704)">
 				<path

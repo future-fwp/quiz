@@ -1,6 +1,12 @@
+import ChrismasTree from "../components/Glow/ChrismasTree";
+import CircleGlow from "../components/Glow/CircleGlow";
+import Triangle from "../components/Glow/Triangle";
 const Home = () => {
 	return (
-		<div className="flex justify-center items-center h-screen">
+		<div className="flex relative justify-center items-center h-screen">
+			<CircleGlow addlayout="top-[-100px] left-[-100px]" />
+
+			<CircleGlow addlayout="bottom-[20px] left-[40px]" />
 			<div>
 				<h1 className="text-center text-h1 font-medium text-transparent bg-clip-text bg-gradient-to-r from-white to-grayStroke">
 					Sign in to get started
@@ -48,6 +54,8 @@ const Home = () => {
 					/>
 				</form>
 			</div>
+			<ChrismasTree addlayout="right-[20px] bottom-[20px]" />
+			<Triangle addlayout="top-[20px] -z-10 right-[20px]" />
 		</div>
 	);
 };
