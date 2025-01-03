@@ -3,6 +3,7 @@ import CardAnswer from "../components/Card/CardAnswer";
 import { useState, useEffect } from "react";
 import CircleGlow from "../components/Glow/CircleGlow";
 import Triangle from "../components/Glow/Triangle";
+import Navbar from "./Navbar";
 const QuizPage = () => {
 	const HeadingRef = useRef<HTMLHeadingElement | null>(null);
 	const [headingWidth, setHeadingWidth] = useState(0);
