@@ -16,9 +16,12 @@
 		"react-dom": "^18.3.1"
 	},
 	"devDependencies": {
+		"@babel/core": "^7.26.0",
 		"@babel/preset-env": "^7.26.0",
+		"@babel/preset-react": "^7.26.3",
 		"@babel/preset-typescript": "^7.26.0",
 		"@eslint/js": "^9.17.0",
+		"@jest/globals": "^29.7.0",
 		"@testing-library/dom": "^10.4.0",
 		"@testing-library/jest-dom": "^6.6.3",
 		"@testing-library/react": "^16.1.0",
