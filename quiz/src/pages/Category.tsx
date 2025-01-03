@@ -1,4 +1,4 @@
-import CardCategory from "../components/Card/CardCategory";
+// // import CardCategory from "../components/Card/CardCategory";
 import CircleGlow from "../components/Glow/CircleGlow";
 import Triangle from "../components/Glow/Triangle";
 // const CardCategoriesGroup = ({ category, type }: { category: string; type: string }) => {
@@ -47,6 +47,7 @@ const Category = () => {
 				</h2>
 				<ul className="flex flex-col md:flex-row gap-6 md:gap-8 lg:gap-10 overflow-x-scroll relative before:absolute before:w-full before:h-full before:bg-gradient-to-r before:from-grayStroke/20 before:to-transparent after:absolute after:w-full after:h-full after:bg-gradient-to-r after:from-transparent after:to-grayStroke/20">
 					<p className="before:contents-[''] inline-block w-10 h-10 bg-gradient-to-r from-grayStroke to-gray-500"></p>
+					{/* <CardCategory category={"      Lorem ipsum dolor sit amet."} />
 					<CardCategory category={"      Lorem ipsum dolor sit amet."} />
 					<CardCategory category={"      Lorem ipsum dolor sit amet."} />
 					<CardCategory category={"      Lorem ipsum dolor sit amet."} />
@@ -54,8 +55,7 @@ const Category = () => {
 					<CardCategory category={"      Lorem ipsum dolor sit amet."} />
 					<CardCategory category={"      Lorem ipsum dolor sit amet."} />
 					<CardCategory category={"      Lorem ipsum dolor sit amet."} />
-					<CardCategory category={"      Lorem ipsum dolor sit amet."} />
-					<CardCategory category={"      Lorem ipsum dolor sit amet."} />
+					<CardCategory category={"      Lorem ipsum dolor sit amet."} /> */}
 					<p className="after:contents-[''] inline-block w-10 h-10 bg-gradient-to-r from-grayStroke to-gray-500"></p>
 				</ul>
 			</div>
@@ -65,6 +65,7 @@ const Category = () => {
 				</h2>
 				<ul className="flex flex-col md:flex-row gap-10 overflow-x-scroll relative before:absolute before:w-full before:h-full before:bg-gradient-to-r before:from-grayStroke/20 before:to-transparent after:absolute after:w-full after:h-full after:bg-gradient-to-r after:from-transparent after:to-grayStroke/20">
 					<p className="before:contents-[''] inline-block w-10 h-10 bg-gradient-to-r from-grayStroke to-gray-500"></p>
+					{/* <CardCategory category={"      Lorem ipsum dolor sit amet."} />
 					<CardCategory category={"      Lorem ipsum dolor sit amet."} />
 					<CardCategory category={"      Lorem ipsum dolor sit amet."} />
 					<CardCategory category={"      Lorem ipsum dolor sit amet."} />
@@ -72,8 +73,7 @@ const Category = () => {
 					<CardCategory category={"      Lorem ipsum dolor sit amet."} />
 					<CardCategory category={"      Lorem ipsum dolor sit amet."} />
 					<CardCategory category={"      Lorem ipsum dolor sit amet."} />
-					<CardCategory category={"      Lorem ipsum dolor sit amet."} />
-					<CardCategory category={"      Lorem ipsum dolor sit amet."} />
+					<CardCategory category={"      Lorem ipsum dolor sit amet."} /> */}
 					<p className="after:contents-[''] inline-block w-10 h-10 bg-gradient-to-r from-grayStroke to-gray-500"></p>
 				</ul>
 			</div>

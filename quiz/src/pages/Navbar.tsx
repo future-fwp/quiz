@@ -1,4 +1,7 @@
-const Navbar = ({ isLoggedIn, userInfo }: { isLoggedIn: boolean; userInfo?: string }) => {
+import { useContext } from "react";
+import { UserAuthContext } from "../App";
+const Navbar = () => {
+	const { isLoggedIn, logout } = useContext(UserAuthContext);
 	return (
 		<div>
 			{!isLoggedIn ? (
@@ -8,7 +11,12 @@ const Navbar = ({ isLoggedIn, userInfo }: { isLoggedIn: boolean; userInfo?: stri
 				</div>
 			) : (
 				<div className="flex justify-end">
-					<button className="text-white bg-black px-3 py-2">Logout</button>
+					<button
+						className="text-white bg-black px-3 py-2"
+						onClick={logout}
+					>
+						Logout
+					</button>
 				</div>
 			)}
 		</div>

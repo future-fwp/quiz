@@ -16,7 +16,7 @@ const Triangle = ({ addlayout }: { addlayout: string }) => {
 				<path
 					d="M125 705.5L439 129L616.5 330L125 705.5Z"
 					stroke="#06DCEB"
-					stroke-width="10"
+					strokeWidth="10"
 				/>
 			</g>
 			<defs>
@@ -27,10 +27,10 @@ const Triangle = ({ addlayout }: { addlayout: string }) => {
 					width="743.192"
 					height="829.133"
 					filterUnits="userSpaceOnUse"
-					color-interpolation-filters="sRGB"
+					colorInterpolationFilters="sRGB"
 				>
 					<feFlood
-						flood-opacity="0"
+						floodOpacity="0"
 						result="BackgroundImageFix"
 					/>
 					<feBlend

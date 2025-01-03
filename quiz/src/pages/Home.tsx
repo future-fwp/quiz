@@ -1,16 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import ChrismasTree from "../components/Glow/ChrismasTree";
 import CircleGlow from "../components/Glow/CircleGlow";
 import Triangle from "../components/Glow/Triangle";
+import { UserAuthContext } from "../App";
 
 // Instead of:
-const Home = ({
-	setIsLoggedIn,
-	setUserInfo,
-}: {
-	setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
-	setUserInfo?: React.Dispatch<React.SetStateAction<string>>;
-}) => {
+const Home = () => {
+	const { login } = useContext(UserAuthContext);
 	const [name, setName] = useState("");
 	const [password, setPassword] = useState("");
 	const [errorUsername, setErrorUsername] = useState("");
@@ -19,23 +15,32 @@ const Home = ({
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 
-		if (!name) {
-			setErrorUsername("Please enter your username");
+		// Reset errors first
+		setErrorUsername("");
+		setErrorPassword("");
 
-			// if use prisma database has invalid result // wrtie the result here
+		// Validation flags
+		let hasErrors = false;
+
+		// Username validation
+		if (!name?.trim()) {
+			setErrorUsername("Please enter your username");
+			hasErrors = true;
 		}
+
+		// Password validation - combining checks
 		if (!password) {
 			setErrorPassword("Please enter your password");
-		}
-		if (password.length < 8) {
+			hasErrors = true;
+		} else if (password.length < 8) {
 			setErrorPassword("Password must be at least 8 characters");
+			hasErrors = true;
 		}
-		if (errorUsername || errorPassword) {
-			return;
+
+		// Only proceed if no errors
+		if (!hasErrors) {
+			login(name);
 		}
-		setErrorUsername(""); // test login & error
-		setErrorPassword("");
-		setIsLoggedIn(true);
 	};
 
 	return (

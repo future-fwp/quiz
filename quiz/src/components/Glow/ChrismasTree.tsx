@@ -16,7 +16,7 @@ const ChrismasTree = ({ addlayout }: { addlayout: string }) => {
 				<path
 					d="M172.25 310.333V265.833H225.25V310.333H172.25ZM92.75 310.333V251H0L51.0125 162H26.5L119.25 13.6667L212 162H187.487L238.831 251H145.75V310.333H92.75ZM255.062 251L212 176.833H237.506L167.281 64.4708L198.75 13.6667L291.5 162H266.987L318 251H255.062Z"
 					stroke="url(#paint0_linear_4_2704)"
-					stroke-width="10"
+					strokeWidth="10"
 				/>
 			</g>
 			<defs>
@@ -27,10 +27,10 @@ const ChrismasTree = ({ addlayout }: { addlayout: string }) => {
 					width="343.258"
 					height="319.13"
 					filterUnits="userSpaceOnUse"
-					color-interpolation-filters="sRGB"
+					colorInterpolationFilters="sRGB"
 				>
 					<feFlood
-						flood-opacity="0"
+						floodOpacity="0"
 						result="BackgroundImageFix"
 					/>
 					<feBlend
@@ -55,7 +55,7 @@ const ChrismasTree = ({ addlayout }: { addlayout: string }) => {
 					<stop />
 					<stop
 						offset="1"
-						stop-color="#037C85"
+						stopColor="#037C85"
 					/>
 				</linearGradient>
 			</defs>

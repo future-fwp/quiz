@@ -6,6 +6,9 @@ module.exports = {
 	testEnvironment: "jsdom",
 	transform: {
 		".(ts|tsx)": "ts-jest",
+		// "^.+\\.(css|less|scss)$": "jest-transform-stub",
+		"^.+\\.(css|less|scss|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+			"jest-transform-stub",
 	},
 
 	coveragePathIgnorePatterns: [
@@ -17,4 +20,8 @@ module.exports = {
 		"setupTests.ts",
 		"index.tsx",
 	],
+	setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
+	moduleNameMapper: {
+		"\\.(css|less|scss|sass)$": "identity-obj-proxy",
+	},
 };

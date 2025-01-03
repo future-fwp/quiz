@@ -22,10 +22,10 @@ const Award = () => {
 					y2="150"
 					gradientUnits="userSpaceOnUse"
 				>
-					<stop stop-color="#06DCEB" />
+					<stop stopColor="#06DCEB" />
 					<stop
 						offset="1"
-						stop-color="#037C85"
+						stopColor="#037C85"
 					/>
 				</linearGradient>
 			</defs>
