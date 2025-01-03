@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+	@apply text-white bg-black;
+}
+
+.gradient-stroke {
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
+	background-image: linear-gradient(to right, #ee7724, #d8363a, #7a306c);
+}
