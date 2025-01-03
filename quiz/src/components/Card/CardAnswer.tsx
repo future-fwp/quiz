@@ -1,8 +1,13 @@
-const CardAnswer = ({ choice, isSelected }: { choice: string; isSelected: boolean }) => {
+const CardAnswer = ({ choice, isSelected, onClick }: { choice: string; isSelected: boolean; onClick: () => void }) => {
 	return (
 		<div>
 			<li>
-				<button className="bg-black border border-gray-300 rounded-md p-4  text-left">{choice}</button>
+				<button
+					className="bg-black border border-gray-300 rounded-md p-4  text-left"
+					onClick={onClick}
+				>
+					{choice}
+				</button>
 			</li>
 		</div>
 	);

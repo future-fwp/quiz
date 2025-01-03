@@ -3,11 +3,12 @@ import ChrismasTree from "../components/Glow/ChrismasTree";
 import CircleGlow from "../components/Glow/CircleGlow";
 import Triangle from "../components/Glow/Triangle";
 import { UserAuthContext } from "../App";
-
+import { useNavigate } from "react-router-dom";
 // Instead of:
 const Home = () => {
 	const { login } = useContext(UserAuthContext);
 	const [name, setName] = useState("");
+	const navigate = useNavigate(); // Initialize useNavigate
 	const [password, setPassword] = useState("");
 	const [errorUsername, setErrorUsername] = useState("");
 	const [errorPassword, setErrorPassword] = useState("");
@@ -40,6 +41,7 @@ const Home = () => {
 		// Only proceed if no errors
 		if (!hasErrors) {
 			login(name);
+			navigate("/category"); // Navigate to "/category" on successful login
 		}
 	};
 

@@ -11,5 +11,5 @@
 	// 	"src/**/*.ts", // Include all TypeScript files in src
 	// 	"src/**/*.tsx",
 	// 	"src/images.d.ts" // Include your image declarations
-	// ]
+	// ],
 }
