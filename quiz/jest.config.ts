@@ -5,12 +5,8 @@ module.exports = {
 	coverageDirectory: "coverage",
 	testEnvironment: "jsdom",
 	transform: {
-		"^.+\\.tsx?$": "ts-jest", // Use ts-jest for TypeScript and JSX
-		// "\\.[jt]sx?$": "esbuild-jest", // You might not need this anymore
+		".(ts|tsx)": "ts-jest",
 	},
-
-	preset: "ts-jest/presets/js-with-ts",
-	// Or the appropriate preset for your setup
 
 	coveragePathIgnorePatterns: [
 		"/node_modules/",
@@ -21,5 +17,4 @@ module.exports = {
 		"setupTests.ts",
 		"index.tsx",
 	],
-	setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
 };
