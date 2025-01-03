@@ -5,7 +5,7 @@ import Category from "./pages/Category";
 import QuizPage from "./pages/QuizPage";
 import { useState, createContext } from "react";
 import Navbar from "./pages/Navbar";
-import { BrowserRouter, Routes, Route } from "react-router-dom"; // Import BrowserRouter, Routes, Route
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 export const UserAuthContext = createContext<{
 	isLoggedIn: boolean;
@@ -33,18 +33,11 @@ function App() {
 		setUserInfo("");
 	};
 
+	// Wrapper component to avoid repetition
 	const WrapperComponentOtherThanNavbar = ({ children }: { children: React.ReactNode }) => {
-		/*************  ✨ Codeium Command ⭐  *************/
-		/**
-		 * Logs out the user by resetting the authentication state.
-		 * Sets `isLoggedIn` to false and clears `userInfo`.
-		 */
-
-		/******  c3b05266-cf81-4500-a126-1cc67acb0b14  *******/ return (
+		return (
 			<div className="flex flex-col">
-				<div>
-					<Navbar />
-				</div>
+				<Navbar />
 				<div>{children}</div>
 			</div>
 		);
@@ -60,11 +53,7 @@ function App() {
 			}}
 		>
 			<BrowserRouter>
-				{" "}
-				{/* Wrap your routes with BrowserRouter */}
 				<Routes>
-					{" "}
-					{/* Use Routes component to define routes */}
 					<Route
 						path="/"
 						element={
@@ -72,8 +61,7 @@ function App() {
 								<Home />
 							</WrapperComponentOtherThanNavbar>
 						}
-					/>{" "}
-					{/* Route for Home page */}
+					/>
 					<Route
 						path="/achievement"
 						element={
@@ -87,14 +75,13 @@ function App() {
 								</WrapperComponentOtherThanNavbar>
 							)
 						}
-					/>{" "}
-					{/* Route for Achievement page, accessible only when logged in */}
+					/>
 					<Route
 						path="/category"
 						element={
 							isLoggedIn ? (
 								<WrapperComponentOtherThanNavbar>
-									<Category />{" "}
+									<Category />
 								</WrapperComponentOtherThanNavbar>
 							) : (
 								<WrapperComponentOtherThanNavbar>
@@ -102,23 +89,21 @@ function App() {
 								</WrapperComponentOtherThanNavbar>
 							)
 						}
-					/>{" "}
-					{/* Route for Category page, accessible only when logged in */}
+					/>
 					<Route
 						path="/quizpage"
 						element={
 							isLoggedIn ? (
 								<WrapperComponentOtherThanNavbar>
-									<QuizPage />{" "}
+									<QuizPage />
 								</WrapperComponentOtherThanNavbar>
 							) : (
 								<WrapperComponentOtherThanNavbar>
-									<Home />{" "}
+									<Home />
 								</WrapperComponentOtherThanNavbar>
 							)
 						}
-					/>{" "}
-					{/* Route for QuizPage, accessible only when logged in */}
+					/>
 				</Routes>
 			</BrowserRouter>
 		</UserAuthContext.Provider>

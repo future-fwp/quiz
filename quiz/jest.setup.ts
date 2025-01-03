@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom";
 
-import "jsdom-global/register";
+import { TextEncoder, TextDecoder } from "util";
 
-// ... other Jest setup
+Object.assign(global, { TextDecoder, TextEncoder });

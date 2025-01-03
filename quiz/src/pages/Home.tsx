@@ -4,11 +4,10 @@ import CircleGlow from "../components/Glow/CircleGlow";
 import Triangle from "../components/Glow/Triangle";
 import { UserAuthContext } from "../App";
 import { useNavigate } from "react-router-dom";
-// Instead of:
 const Home = () => {
 	const { login } = useContext(UserAuthContext);
 	const [name, setName] = useState("");
-	const navigate = useNavigate(); // Initialize useNavigate
+	const navigate = useNavigate();
 	const [password, setPassword] = useState("");
 	const [errorUsername, setErrorUsername] = useState("");
 	const [errorPassword, setErrorPassword] = useState("");
