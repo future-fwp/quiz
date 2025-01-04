@@ -14,3 +14,5 @@ const CardAnswer = ({ choice, isSelected, onClick }: { choice: string; isSelecte
 };
 
 export default CardAnswer;
+
+// this is card answer
