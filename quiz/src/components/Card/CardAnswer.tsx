@@ -1,4 +1,4 @@
-const CardAnswer = ({ choice, isSelected, onClick }: { choice: string; isSelected: boolean; onClick: () => void }) => {
+const CardAnswer = ({ choice, onClick }: { choice: string; isSelected: boolean; onClick: () => void }) => {
 	return (
 		<div>
 			<li>

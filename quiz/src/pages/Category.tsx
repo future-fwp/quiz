@@ -53,7 +53,16 @@ const Category = ({
 		setTypeQuestion(event.target.value);
 		console.log(typeQuestion, "typeQuestion");
 	};
+	/**
+	 * Handles the click event for a category card.
+	 * @param {number} id The ID of the category.
+	 * @param {string} name The name of the category.
+	 */
 	const handleCategoryClick = (id: number, name: string) => {
+		/**
+		 * Navigate to the quiz page with the selected category ID and name
+		 * as well as the selected difficulty.
+		 */
 		navigate("/quizpage", {
 			state: {
 				categoryId: id,

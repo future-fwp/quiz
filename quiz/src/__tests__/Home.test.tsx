@@ -1,6 +1,6 @@
 // src/__tests__/App.test.tsx
 import { render, screen, fireEvent } from "@testing-library/react";
-import App from "../App"; // Assuming App is in the same directory or adjust path accordingly
+// Assuming App is in the same directory or adjust path accordingly
 import "@testing-library/jest-dom";
 import { UserAuthContext } from "../App";
 import Home from "../pages/Home";

@@ -1,5 +1,5 @@
 import Award from "../components/Icon/Award";
-import { useContext, useState, useEffect } from "react";
+import { useContext } from "react";
 import { UserAuthContext } from "../App";
 import { useScore } from "../ScoreProvider";
 const Achievement = () => {

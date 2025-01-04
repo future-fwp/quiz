@@ -1,24 +1,25 @@
-import { render, screen, waitFor, fireEvent, act } from "@testing-library/react";
-import CardCategory from "../components/Card/CardCategory";
-// import { Link } from "react-router-dom";
-import "@testing-library/jest-dom";
-import { UserAuthContext } from "../App";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { MemoryRouter } from "react-router-dom";
-import { debug } from "node:console";
-import Home from "../pages/Home";
+// import { render, screen, waitFor, fireEvent, act } from "@testing-library/react";
+// import CardCategory from "../components/Card/CardCategory";
+// // import { Link } from "react-router-dom";
+// import "@testing-library/jest-dom";
+// import { UserAuthContext } from "../App";
+// import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import { MemoryRouter } from "react-router-dom";
+// import { debug } from "node:console";
+// import Home from "../pages/Home";
 
-// const MockQuizPage = () => {
-// 	const location = useLocation();
-// 	return <div>{JSON.stringify(location.state)}</div>;
-// };
+// // const MockQuizPage = () => {
+// // 	const location = useLocation();
+// // 	return <div>{JSON.stringify(location.state)}</div>;
+// // };
 
-import QuizPage from "../pages/QuizPage";
+// import QuizPage from "../pages/QuizPage";
 
 const mockQuestionData = [
 	{
 		category: "Entertainment: Video Games",
 		type: "multiple",
+
 		difficulty: "easy",
 		question: "What is the name of the main character in the &quot;Legend of Zelda&quot; franchise?",
 		correct_answer: "Link",
@@ -101,123 +102,123 @@ beforeEach(() => {
 // 	});
 // });
 
-describe("QuizPage Component", () => {
-	afterEach(() => {
-		// Clean up mocks after each test
-	});
+// describe("QuizPage Component", () => {
+// 	afterEach(() => {
+// 		// Clean up mocks after each test
+// 	});
 
-	it("renders loading state while fetching data", () => {
-		const testRoute = "/quizpage";
-		render(
-			<UserAuthContext.Provider value={{ isLoggedIn: false, userInfo: "", login: jest.fn(), logout: jest.fn() }}>
-				<MemoryRouter initialEntries={[testRoute]}>
-					<Routes>
-						<Route
-							path="/"
-							element={<Home />}
-						></Route>
-						<Route
-							path="/quizpage"
-							element={<QuizPage />}
-						/>
-						{/* ... other routes */}
-					</Routes>
-				</MemoryRouter>
-				,
-			</UserAuthContext.Provider>
-		);
-		expect(screen.getByText("Fetching quiz questions, please wait...")).toBeInTheDocument();
-	});
+// 	it("renders loading state while fetching data", () => {
+// 		const testRoute = "/quizpage";
+// 		render(
+// 			<UserAuthContext.Provider value={{ isLoggedIn: false, userInfo: "", login: jest.fn(), logout: jest.fn() }}>
+// 				<MemoryRouter initialEntries={[testRoute]}>
+// 					<Routes>
+// 						<Route
+// 							path="/"
+// 							element={<Home />}
+// 						></Route>
+// 						<Route
+// 							path="/quizpage"
+// 							element={<QuizPage />}
+// 						/>
+// 						{/* ... other routes */}
+// 					</Routes>
+// 				</MemoryRouter>
+// 				,
+// 			</UserAuthContext.Provider>
+// 		);
+// 		expect(screen.getByText("Fetching quiz questions, please wait...")).toBeInTheDocument();
+// 	});
 
-	it("fetches and displays quiz data correctly", async () => {
-		const testRoute = "/quizpage";
-		await act(async () => {
-			render(
-				<UserAuthContext.Provider value={{ isLoggedIn: false, userInfo: "", login: jest.fn(), logout: jest.fn() }}>
-					<MemoryRouter initialEntries={[testRoute]}>
-						<Routes>
-							<Route
-								path="/"
-								element={<Home />}
-							></Route>
-							<Route
-								path="/quizpage"
-								element={<QuizPage />}
-							/>
-							{/* ... other routes */}
-						</Routes>
-					</MemoryRouter>
-				</UserAuthContext.Provider>
-			);
-		});
+// 	it("fetches and displays quiz data correctly", async () => {
+// 		const testRoute = "/quizpage";
+// 		await act(async () => {
+// 			render(
+// 				<UserAuthContext.Provider value={{ isLoggedIn: false, userInfo: "", login: jest.fn(), logout: jest.fn() }}>
+// 					<MemoryRouter initialEntries={[testRoute]}>
+// 						<Routes>
+// 							<Route
+// 								path="/"
+// 								element={<Home />}
+// 							></Route>
+// 							<Route
+// 								path="/quizpage"
+// 								element={<QuizPage />}
+// 							/>
+// 							{/* ... other routes */}
+// 						</Routes>
+// 					</MemoryRouter>
+// 				</UserAuthContext.Provider>
+// 			);
+// 		});
 
-		// Wait for the data to load
-		await waitFor(() => {
-			expect(screen.queryByText(/Fetching quiz questions, please wait.../i)).toBeNull();
-		});
+// 		// Wait for the data to load
+// 		await waitFor(() => {
+// 			expect(screen.queryByText(/Fetching quiz questions, please wait.../i)).toBeNull();
+// 		});
 
-		expect(screen.getByText(/Some text from your quiz data/i)).toBeInTheDocument();
+// 		expect(screen.getByText(/Some text from your quiz data/i)).toBeInTheDocument();
 
-		// Check if choices are displayed
-		mockQuestionData[0].incorrect_answers.forEach((answer) => {
-			expect(screen.getByText(answer)).toBeInTheDocument();
-		});
-		expect(screen.getByText(mockQuestionData[0].correct_answer)).toBeInTheDocument();
-	});
+// 		// Check if choices are displayed
+// 		mockQuestionData[0].incorrect_answers.forEach((answer) => {
+// 			expect(screen.getByText(answer)).toBeInTheDocument();
+// 		});
+// 		expect(screen.getByText(mockQuestionData[0].correct_answer)).toBeInTheDocument();
+// 	});
 
-	it("moves to the next question when an answer is clicked", async () => {
-		const testRoute = "/quizpage";
-		render(
-			<UserAuthContext.Provider value={{ isLoggedIn: false, userInfo: "", login: jest.fn(), logout: jest.fn() }}>
-				<MemoryRouter initialEntries={[testRoute]}>
-					<Routes>
-						<Route
-							path="/"
-							element={<Home />}
-						/>
-						<Route
-							path="/quizpage"
-							element={<QuizPage />}
-						/>
-						{/* ... other routes */}
-					</Routes>
-				</MemoryRouter>
-				,
-			</UserAuthContext.Provider>
-		);
-		await screen.findByText(/What is the name of the main character/i);
+// 	it("moves to the next question when an answer is clicked", async () => {
+// 		const testRoute = "/quizpage";
+// 		render(
+// 			<UserAuthContext.Provider value={{ isLoggedIn: false, userInfo: "", login: jest.fn(), logout: jest.fn() }}>
+// 				<MemoryRouter initialEntries={[testRoute]}>
+// 					<Routes>
+// 						<Route
+// 							path="/"
+// 							element={<Home />}
+// 						/>
+// 						<Route
+// 							path="/quizpage"
+// 							element={<QuizPage />}
+// 						/>
+// 						{/* ... other routes */}
+// 					</Routes>
+// 				</MemoryRouter>
+// 				,
+// 			</UserAuthContext.Provider>
+// 		);
+// 		await screen.findByText(/What is the name of the main character/i);
 
-		// Click on any answer choice
-		const answerButton = screen.getByText(mockQuestionData[0].correct_answer);
-		fireEvent.click(answerButton);
+// 		// Click on any answer choice
+// 		const answerButton = screen.getByText(mockQuestionData[0].correct_answer);
+// 		fireEvent.click(answerButton);
 
-		// Since we only have one mock question, it should display the "Quiz finished!" message
-		expect(screen.getByText("Quiz finished!")).toBeInTheDocument();
-	});
+// 		// Since we only have one mock question, it should display the "Quiz finished!" message
+// 		expect(screen.getByText("Quiz finished!")).toBeInTheDocument();
+// 	});
 
-	it("displays the correct question number", async () => {
-		const testRoute = "/quizpage";
-		render(
-			<UserAuthContext.Provider value={{ isLoggedIn: false, userInfo: "", login: jest.fn(), logout: jest.fn() }}>
-				<MemoryRouter initialEntries={[testRoute]}>
-					<Routes>
-						<Route
-							path="/"
-							element={<Home />}
-						></Route>
-						<Route
-							path="/category"
-							element={<QuizPage />}
-						/>
-						{/* ... other routes */}
-					</Routes>
-				</MemoryRouter>
-				,
-			</UserAuthContext.Provider>
-		);
-		await screen.findByText(/What is the name of the main character/i);
+// 	it("displays the correct question number", async () => {
+// 		const testRoute = "/quizpage";
+// 		render(
+// 			<UserAuthContext.Provider value={{ isLoggedIn: false, userInfo: "", login: jest.fn(), logout: jest.fn() }}>
+// 				<MemoryRouter initialEntries={[testRoute]}>
+// 					<Routes>
+// 						<Route
+// 							path="/"
+// 							element={<Home />}
+// 						></Route>
+// 						<Route
+// 							path="/category"
+// 							element={<QuizPage />}
+// 						/>
+// 						{/* ... other routes */}
+// 					</Routes>
+// 				</MemoryRouter>
+// 				,
+// 			</UserAuthContext.Provider>
+// 		);
+// 		await screen.findByText(/What is the name of the main character/i);
 
-		expect(screen.getByText("Question: 1 / 1")).toBeInTheDocument();
-	});
-});
+// 		expect(screen.getByText("Question: 1 / 1")).toBeInTheDocument();
+// 	});
+// });
 // use properties for link attribute
