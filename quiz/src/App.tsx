@@ -5,7 +5,7 @@ import Category from "./pages/Category";
 import QuizPage from "./pages/QuizPage";
 import { useState, createContext } from "react";
 import Navbar from "./pages/Navbar";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import ScoreProvider from "./ScoreProvider";
 export const UserAuthContext = createContext<{
 	isLoggedIn: boolean;
@@ -22,8 +22,11 @@ export const UserAuthContext = createContext<{
 function App() {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [userInfo, setUserInfo] = useState("");
+	const [selectedDifficulty, setSelectedDifficulty] = useState<string>("easy"); // State for difficulty
+	const [numberOfQuestions, setNumberOfQuestions] = useState<number>(10); // State for number of questions
+	const [typeQuestion, setTypeQuestion] = useState<string>(""); // State for type of questions
 
-	const location = useLocation();
+	// const location = useLocation();
 	// const { hash, pathname, search } = location;
 
 	const handleLogin = (userInfo: string) => {
@@ -84,7 +87,14 @@ function App() {
 						element={
 							isLoggedIn ? (
 								<WrapperComponentOtherThanNavbar>
-									<Category />
+									<Category
+										selectedDifficulty={selectedDifficulty}
+										setSelectedDifficulty={setSelectedDifficulty}
+										numberOfQuestions={numberOfQuestions}
+										setNumberOfQuestions={setNumberOfQuestions}
+										typeQuestion={typeQuestion}
+										setTypeQuestion={setTypeQuestion}
+									/>
 								</WrapperComponentOtherThanNavbar>
 							) : (
 								<WrapperComponentOtherThanNavbar>
@@ -98,7 +108,11 @@ function App() {
 						element={
 							isLoggedIn ? (
 								<WrapperComponentOtherThanNavbar>
-									<QuizPage />
+									<QuizPage
+										selectedDifficulty={selectedDifficulty}
+										numberOfQuestions={numberOfQuestions}
+										typeQuestion={typeQuestion}
+									/>
 								</WrapperComponentOtherThanNavbar>
 							) : (
 								<WrapperComponentOtherThanNavbar>

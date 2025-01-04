@@ -5,9 +5,23 @@ import Triangle from "../components/Glow/Triangle";
 import { useState, useEffect } from "react";
 
 //
-const Category = () => {
+const Category = ({
+	selectedDifficulty,
+	setSelectedDifficulty,
+	numberOfQuestions,
+	setNumberOfQuestions,
+	typeQuestion,
+	setTypeQuestion,
+}: {
+	selectedDifficulty: string;
+	setSelectedDifficulty: React.Dispatch<React.SetStateAction<string>>;
+	numberOfQuestions: number;
+	setNumberOfQuestions: React.Dispatch<React.SetStateAction<number>>;
+	typeQuestion: string;
+	setTypeQuestion: React.Dispatch<React.SetStateAction<string>>;
+}) => {
 	const [categories, setCategories] = useState<{ id: number; name: string }[]>([]);
-	const [selectedDifficulty, setSelectedDifficulty] = useState<string>("easy"); // State for difficulty
+
 	const navigate = useNavigate();
 	useEffect(() => {
 		const fetchCategories = async () => {
@@ -28,6 +42,16 @@ const Category = () => {
 	const handleDifficultyChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
 		setSelectedDifficulty(event.target.value);
 		console.log(selectedDifficulty, "selectedDifficulty");
+	};
+
+	const handleQuestionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+		setNumberOfQuestions(parseInt(event.target.value));
+		console.log(numberOfQuestions, "numberOfQuestions");
+	};
+
+	const handleTypeQuestionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+		setTypeQuestion(event.target.value);
+		console.log(typeQuestion, "typeQuestion");
 	};
 	const handleCategoryClick = (id: number, name: string) => {
 		navigate("/quizpage", {
@@ -57,6 +81,35 @@ const Category = () => {
 					<option value="easy">Easy</option>
 					<option value="medium">Medium</option>
 					<option value="hard">Hard</option>
+				</select>
+				<h4 className="text-h4 text-transparent bg-clip-text bg-gradient-to-r from-white to-grayStroke">
+					Number of questions
+				</h4>
+				<select
+					name="difficulty"
+					id="difficulty"
+					className="text-white bg-gradient-to-br from-grayStroke to-gray-500"
+					value={numberOfQuestions}
+					onChange={handleQuestionChange}
+				>
+					<option value="10">10 Questions</option>
+					<option value="20">20 Questions</option>
+					<option value="30">30 Questions</option>
+					<option value="40">40 Questions</option>
+					<option value="50">50 Questions</option>
+				</select>
+				<h4 className="text-h4 text-transparent bg-clip-text bg-gradient-to-r from-white to-grayStroke">
+					Type questions
+				</h4>
+				<select
+					name="difficulty"
+					id="difficulty"
+					className="text-white bg-gradient-to-br from-grayStroke to-gray-500"
+					value={typeQuestion}
+					onChange={handleTypeQuestionChange}
+				>
+					<option value="multiple">Multiple Choice</option>
+					<option value="boolean">True or False</option>
 				</select>
 			</div>
 			<div className="flex flex-col gap-3 ">
