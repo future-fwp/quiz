@@ -5,14 +5,16 @@ import { Link } from "react-router-dom";
 type CategoryData = {
 	id: number;
 	name: string;
+	onClick: () => void;
 };
-const CardCategory = ({ id, name }: CategoryData) => {
+const CardCategory = ({ id, name, onClick }: CategoryData) => {
 	return (
 		<li className="min-w-[300px]">
 			<div className="bg-gradient-to-r from-secondary to-blueStrokeCard p-1">
 				<Link
-					to="/quizpage"
-					state={{ categoryId: id, category: name }}
+					to={`/quizpage`}
+					state={{ categoryId: id, category: name, difficulty: "easy" }}
+					onClick={onClick}
 					className="flex h-full w-full flex-col gap-2 bg-black "
 					data-testid="category-link"
 				>

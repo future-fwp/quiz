@@ -3,8 +3,8 @@ import CardAnswer from "../components/Card/CardAnswer";
 import { useState, useEffect } from "react";
 import CircleGlow from "../components/Glow/CircleGlow";
 import Triangle from "../components/Glow/Triangle";
-import Navbar from "./Navbar";
-
+import { useLocation, useNavigate } from "react-router-dom";
+import { useScore } from "../ScoreProvider";
 type QuestionData = {
 	category: string;
 	type: string;
@@ -15,6 +15,7 @@ type QuestionData = {
 };
 
 const QuizPage = () => {
+	const { score, setScore, setAnsweredQuestions } = useScore();
 	const HeadingRef = useRef<HTMLHeadingElement | null>(null);
 	const [headingWidth, setHeadingWidth] = useState(0);
 	const [questionData, setQuestionData] = useState<QuestionData[] | null>(null);
@@ -27,17 +28,35 @@ const QuizPage = () => {
 		}
 	}, []);
 
+	const location = useLocation();
+
+	const navigate = useNavigate(); // Add useNavigate
+
+	const { categoryId, difficulty, category } = location.state || {
+		categoryId: null,
+		difficulty: "easy",
+		category: "",
+	}; // Get difficulty
+	console.log(difficulty, "difficulty");
+
 	useEffect(() => {
 		const fetchData = async () => {
-			const response = await fetch("https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple");
-			const data = await response.json();
-			setQuestionData(data.results); // Assuming you want to display the first question
+			const url = `https://opentdb.com/api.php?amount=10&category=${categoryId}&difficulty=${difficulty}&type=multiple`;
+			try {
+				const response = await fetch(url);
+				const data = await response.json();
+				setQuestionData(data.results);
+			} catch (error) {
+				console.error("Failed to fetch questions:", error);
+			}
 		};
+		if (categoryId) {
+			fetchData();
+		}
+	}, [categoryId]);
 
-		fetchData();
-	}, []);
 	if (!questionData) {
-		return <div>Loading...</div>;
+		return <div>Fetching quiz questions, please wait...</div>;
 	}
 
 	// Process the choices to include the correct answer
@@ -47,13 +66,27 @@ const QuizPage = () => {
 		() => Math.random() - 0.5
 	);
 
-	const handleAnswerClick = () => {
+	const handleAnswerClick = (selectedAnswer: string) => {
 		// Check if it's the last question
 		if (questionIndex < questionData.length - 1) {
 			setQuestionIndex(questionIndex + 1);
+			if (setScore && setAnsweredQuestions) {
+				if (!currentQuestion.correct_answer.includes(selectedAnswer)) {
+					setScore(score + 1);
+				}
+
+				setAnsweredQuestions((prevAnswers) => [
+					...prevAnswers,
+					{
+						question: currentQuestion.question,
+						userAnswer: selectedAnswer,
+						correct_answer: currentQuestion.correct_answer,
+					},
+				]);
+			}
 		} else {
 			// Handle end of quiz (e.g., show results)
-			console.log("Quiz finished!");
+			navigate("/achievement");
 		}
 	};
 
@@ -62,7 +95,10 @@ const QuizPage = () => {
 			<CircleGlow addlayout="top-[0px] -z-10" />
 			<Triangle addlayout=" right-0 top-[20px] -z-10" />
 			<div>
-				<div className="flex justify-center">
+				<div className="flex flex-col items-center justify-center">
+					<h2 className="text-h2 inline-block font-bold text-transparent  bg-clip-text bg-gradient-to-r from-white to-grayStroke  pb-4  text-center mb-5">
+						{category} {difficulty} Quiz
+					</h2>
 					<h3
 						ref={HeadingRef}
 						className={`text-h3 text-transparent  bg-clip-text bg-gradient-to-r from-white to-grayStroke  inline-block pb-4  text-center mb-5  w-[calc(${headingWidth}px)]`}
@@ -81,7 +117,7 @@ const QuizPage = () => {
 							key={JSON.stringify(choice)}
 							choice={choice}
 							isSelected={false}
-							onClick={handleAnswerClick}
+							onClick={() => handleAnswerClick(choice)} // Pass the choice to the handler
 						/>
 					))}
 				</ul>

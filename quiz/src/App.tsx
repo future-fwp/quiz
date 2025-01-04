@@ -5,8 +5,8 @@ import Category from "./pages/Category";
 import QuizPage from "./pages/QuizPage";
 import { useState, createContext } from "react";
 import Navbar from "./pages/Navbar";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import { Routes, Route, useLocation } from "react-router-dom";
+import ScoreProvider from "./ScoreProvider";
 export const UserAuthContext = createContext<{
 	isLoggedIn: boolean;
 	userInfo: string;
@@ -22,6 +22,9 @@ export const UserAuthContext = createContext<{
 function App() {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [userInfo, setUserInfo] = useState("");
+
+	const location = useLocation();
+	// const { hash, pathname, search } = location;
 
 	const handleLogin = (userInfo: string) => {
 		setIsLoggedIn(true);
@@ -52,7 +55,7 @@ function App() {
 				logout: handleLogout,
 			}}
 		>
-			<BrowserRouter>
+			<ScoreProvider>
 				<Routes>
 					<Route
 						path="/"
@@ -91,7 +94,7 @@ function App() {
 						}
 					/>
 					<Route
-						path="/quizpage"
+						path={`/quizpage`}
 						element={
 							isLoggedIn ? (
 								<WrapperComponentOtherThanNavbar>
@@ -105,7 +108,7 @@ function App() {
 						}
 					/>
 				</Routes>
-			</BrowserRouter>
+			</ScoreProvider>
 		</UserAuthContext.Provider>
 	);
 }
