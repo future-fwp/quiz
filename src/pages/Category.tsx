@@ -92,7 +92,7 @@ const Category = ({
 			<motion.div
 				initial={{ y: -20, opacity: 0 }}
 				animate={{ y: 0, opacity: 1 }}
-				transition={{ delay: 0.2, duration: 0.6 }}
+				transition={{ delay: 0.2, once: true, duratiin: 0.6 }}
 				className="flex flex-col md:flex-row justify-between max-w-[768px] mx-auto"
 			>
 				<h4 className="text-h4 text-transparent bg-clip-text bg-gradient-to-r from-white to-grayStroke">
@@ -143,7 +143,7 @@ const Category = ({
 				<motion.h2
 					initial={{ x: -30, opacity: 0 }}
 					animate={{ x: 0, opacity: 1 }}
-					transition={{ delay: 0.4, duration: 0.5 }}
+					transition={{ delay: 0.4, once: true, duratiin: 0.5 }}
 					className="text-h2  text-transparent bg-clip-text bg-gradient-to-r from-white to-grayStroke w-[200px]  "
 				>
 					Multiple Choice
@@ -151,7 +151,7 @@ const Category = ({
 				<motion.ul
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
-					transition={{ delay: 0.5, duration: 0.8, staggerChildren: 0.1 }} // Stagger children
+					transition={{ delay: 0.5, once: true, duratiin: 0.8, staggerChildren: 0.1 }} // Stagger children
 					className="flex flex-col md:flex-row gap-6 md:gap-8 lg:gap-10 overflow-x-scroll relative  "
 				>
 					<p className="before:contents-[''] inline-block w-10 h-10 bg-gradient-to-r from-grayStroke to-gray-500"></p>
