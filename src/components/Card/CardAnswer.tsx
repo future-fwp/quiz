@@ -6,7 +6,7 @@ const CardAnswer = ({ choice, onClick }: { choice: string; isSelected: boolean; 
 					className="bg-black border border-gray-300 rounded-md p-4  text-left"
 					onClick={onClick}
 				>
-					{choice}
+					<div dangerouslySetInnerHTML={{ __html: choice }}></div>
 				</button>
 			</li>
 		</div>
