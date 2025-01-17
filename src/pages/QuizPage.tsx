@@ -150,11 +150,10 @@ const QuizPage = ({
 						{category} {selectedDifficulty} Quiz
 					</h2>
 					<h3
+						dangerouslySetInnerHTML={{ __html: currentQuestion.question }}
 						ref={HeadingRef}
 						className={`text-h3 text-transparent bg-clip-text bg-gradient-to-r from-white to-grayStroke inline-block pb-4 text-center mb-5 w-[calc(${headingWidth}px)]`}
-					>
-						{currentQuestion.question}
-					</h3>
+					></h3>
 				</div>
 
 				<p className="text-center mb-5">
