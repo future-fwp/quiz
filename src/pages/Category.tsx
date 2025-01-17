@@ -85,7 +85,7 @@ const Category = ({
 			className="max-w-[1200px] relative  mx-auto px-8 py-10 "
 			initial={{ opacity: 0 }} // Start faded out
 			animate={{ opacity: 1 }} // Fade in
-			transition={{ duration: 0.8 }}
+			transition={{ duration: 0.8, once: true }}
 		>
 			<CircleGlow addlayout="top-[100px] left-[0px] -z-10" />
 			<Triangle addlayout="right-0  -z-10" />
