@@ -4,6 +4,7 @@ import CircleGlow from "../components/Glow/CircleGlow";
 import Triangle from "../components/Glow/Triangle";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useCallback } from "react";
 //
 const Category = ({
 	selectedDifficulty,
@@ -39,17 +40,27 @@ const Category = ({
 		fetchCategories();
 	}, []);
 
-	const handleDifficultyChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-		setSelectedDifficulty(event.target.value);
-	};
+	const handleDifficultyChange = useCallback(
+		(event: React.ChangeEvent<HTMLSelectElement>) => {
+			setSelectedDifficulty(event.target.value);
+		},
+		[setSelectedDifficulty]
+	);
 
-	const handleQuestionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-		setNumberOfQuestions(parseInt(event.target.value));
-	};
+	const handleQuestionChange = useCallback(
+		(event: React.ChangeEvent<HTMLSelectElement>) => {
+			setNumberOfQuestions(parseInt(event.target.value));
+		},
+		[setNumberOfQuestions]
+	);
 
-	const handleTypeQuestionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-		setTypeQuestion(event.target.value);
-	};
+	const handleTypeQuestionChange = useCallback(
+		(event: React.ChangeEvent<HTMLSelectElement>) => {
+			setTypeQuestion(event.target.value);
+		},
+		[setTypeQuestion]
+	);
+
 	/**
 	 * Handles the click event for a category card.
 	 * @param {number} id The ID of the category.
