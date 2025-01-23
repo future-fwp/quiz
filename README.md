@@ -2,7 +2,7 @@
 
 Ready to test your knowledge and have some fun? Dive into the **Quiz App** and challenge yourself with exciting quizzes across a variety of categories! Whether you're a trivia master or just looking to learn something new, this app is designed to keep you entertained and engaged.
 
-👉 **Check it out live here:** [https://enchanting-chebakia-06f3a7.netlify.app/](https://enchanting-chebakia-06f3a7.netlify.app/)
+👉 **Check it out live here:** [my quiz app](https://react-quiz-app-06f3a7.netlify.app/)
 
 ---
 
