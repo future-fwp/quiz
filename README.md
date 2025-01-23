@@ -1,50 +1,38 @@
-# React + TypeScript + Vite
+# 🎉 Quiz App - Test Your Knowledge! 🧠
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the **Quiz App**! This interactive quiz application lets you test your knowledge across various categories. Whether you're a trivia enthusiast or just looking to have some fun, this app has something for everyone!
 
-Currently, two official plugins are available:
+## 🌟 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Quiz Register** 📝: Create an account and log in to save your progress and scores.  
+- **Choose Category** 🗂️: Select from categories like General Knowledge, Science, History, and more!  
+- **Start a Quiz** 🚀: Dive into a quiz and answer questions to test your knowledge.  
+- **Calculate Score & Review Answers** 📊: See your score and review correct answers alongside your responses.  
+- **Framer-Motion Animations** 🎬: Enjoy smooth and engaging animations for a better user experience.  
+- **Responsive Design** 📱💻: The app works seamlessly on both mobile and desktop devices.  
+- **Testing with Jest** 🧪: The app is thoroughly tested to ensure reliability.  
+  - User authentication testing.  
+  - Loading category cards.  
+  - Fetching questions and results.  
 
-## Expanding the ESLint configuration
+## 🛠️ Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Frontend**: React, Framer-Motion (for animations)  
+- **Testing**: Jest  
+- **Styling**: tailwind css, Responsive Design  
 
-- Configure the top-level `parserOptions` property like this:
+## 🚀 How to Run the Project
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+1. Clone the repository:  
+   ```bash
+   git clone https://github.com/future-fwp/quiz-react-tailwindcss.git
+   ```
+2. Navigate to project directory
+   ```
+   cd quiz
+   ```
+3. Development stage
+   ```
+   npm install
+   npm run dev
+   ```
