@@ -1,4 +1,4 @@
-# 🌟 Welcome to the Quiz App!(see completed code on branch master3) 🌟
+# 🌟 Welcome to the Quiz App!(see completed code on branch master3) 
 
 Ready to test your knowledge and have some fun? Dive into the **Quiz App** and challenge yourself with exciting quizzes across a variety of categories! Whether you're a trivia master or just looking to learn something new, this app is designed to keep you entertained and engaged.
 
