@@ -34,7 +34,7 @@ Curious? Take a look at the live demo and see for yourself:
 ## 🛠️ Built With
 
 - **Frontend**: React, Framer Motion  
-- **Styling**: CSS/SCSS  
+- **Styling**: Tailwindcss
 - **Testing**: Jest  
 - **Deployment**: Netlify  
 
